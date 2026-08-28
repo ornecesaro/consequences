@@ -1,0 +1,9 @@
+export type StatKey = 'money' | 'reputation' | 'bossTrust' | 'coworkerTrust' | 'stress' | 'information'
+export type GameState = Record<StatKey, number>
+export type Condition = Partial<Record<StatKey, { min?: number; max?: number }>>
+export type Effects = Partial<Record<StatKey, number>>
+export type Choice = { id: string; text: string; conditions?: Condition; effects: Effects; nextEvent?: string; outcome?: string }
+export type Event = { id: string; text: string; choices: Choice[]; weight?: number; condition?: Condition }
+export type Ending = { id: string; title: string; text: string; minScore: number; maxScore?: number }
+export type ShopItem = { id: string; name: string; description: string; priceCoins: number; type: 'boost'|'reroll'|'continue'; effect: string }
+export type RunRecord = { score: number; coins: number; ending: string; decisions: number; date: string }
